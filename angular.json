@@ -5,7 +5,23 @@
   "projects": {
     "TMM": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "type": "component",
+          "skipTests": true,
+           "standalone": true
+        },
+        "@schematics/angular:service": {
+          "type": "service",
+          "flat": true,
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "type": "directive",
+          "flat": true,
+          "skipTests": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -88,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
