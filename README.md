@@ -1,59 +1,150 @@
-# TMM
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.13.
+---
 
-## Development server
+# ▶️ How to Run the Project
 
-To start a local development server, run:
+Follow the steps below to set up and run the application locally.
+
+---
+
+## 1️⃣ Prerequisites
+
+Make sure the following are installed on your system:
+
+* **Node.js (LTS recommended – v18 or higher)**
+* **npm** (comes with Node.js)
+* **Angular CLI (v20 compatible)**
+
+Check versions:
+
+```bash
+node -v
+npm -v
+ng version
+```
+
+If Angular CLI is not installed:
+
+```bash
+npm install -g @angular/cli
+```
+
+---
+
+## 2️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/sarathsuryas/Task-Management-Module
+cd Task-management-module
+```
+
+---
+
+## 3️⃣ Install Dependencies
+
+Run:
+
+```bash
+npm install
+```
+
+This will install:
+
+* Angular dependencies
+* MobX
+* ngx-quill
+* FullCalendar
+* Tailwind CSS
+* Other required libraries
+
+---
+
+## 4️⃣ Start Development Server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Or with automatic browser open:
 
 ```bash
-ng generate component component-name
+ng serve --open
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+
+## 5️⃣ Access the Application
+
+Open your browser and navigate to:
+
+```
+http://localhost:4200
+```
+
+---
+
+# 📁 Data Source
+
+Tasks are loaded from:
+
+```
+src/assets/data/tasks.json
+```
+
+If you modify the JSON file:
+
+* Restart the development server
+* Or refresh the browser
+
+---
+
+# 🧹 If You Face Issues
+
+### Clear Node Modules
 
 ```bash
-ng generate --help
+rm -rf node_modules
+npm install
 ```
 
-## Building
+### Clear Angular Cache
 
-To build the project run:
+```bash
+ng cache clean
+```
+
+Then run again:
+
+```bash
+ng serve
+```
+
+---
+
+# 🏗️ Build for Production
+
+To generate a production build:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Output will be available inside:
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```
+dist/
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+# 🧠 Notes
 
-```bash
-ng e2e
-```
+* This project uses Angular 20 standalone architecture.
+* No external APIs are used.
+* Data is loaded via HttpClient from local JSON.
+* MobX manages application state.
+* Calendar integration uses FullCalendar.
+* Rich text editor is powered by ngx-quill.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
