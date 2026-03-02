@@ -1,0 +1,35 @@
+
+<div class="space-y-4">
+  <h1 class="text-3xl font-bold text-gray-800">
+    {{task().title}}
+  </h1>
+
+  <div class="flex items-center gap-6 text-sm text-gray-500">
+    <span>📅 Deadline: {{task().deadline}}</span>
+
+    <span appStatusColor 
+    [status]="task().status"
+     class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-medium">
+      {{task().status}}
+    </span>
+  </div>
+</div>
+<div class="space-y-8">
+  <h2 class="text-xl font-semibold text-gray-700">
+    Description
+  </h2>
+
+ 
+
+  <div class="border rounded-xl p-4 min-h-[150px]">
+    <p class="text-gray-700" [innerHTML]=" task().description">
+     
+    </p>
+
+    <!-- <ul class="list-disc ml-6 text-gray-700 mt-2">
+      <li>Create task list page</li>
+      <li>Implement task details page</li>
+      <li>Add nested comments support</li>
+    </ul> -->
+  </div>
+</div>

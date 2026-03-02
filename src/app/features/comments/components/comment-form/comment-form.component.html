@@ -1,0 +1,22 @@
+<form class="comment-form" (ngSubmit)="submit()">
+  <label class="comment-form__label" [class.comment-form__label--reply]="parentId()">
+    {{ parentId() ? 'Write a reply' : 'Add a comment' }}
+  </label>
+
+  <textarea
+    name="commentText"
+    class="comment-form__textarea"
+    [(ngModel)]="text"
+    [placeholder]="parentId() ? 'Share your reply...' : 'Share your thoughts...'"
+    rows="4">
+  </textarea>
+
+  <div class="comment-form__actions">
+    <button
+      type="submit"
+      class="comment-form__submit"
+      [disabled]="!text.trim()">
+      {{ parentId() ? 'Post reply' : 'Post comment' }}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,38 @@
+@for (comment of comments(); track comment.id) {
+  <article class="comment-card">
+    <header class="comment-card__header">
+      <span class="comment-card__author">Contributor</span>
+      <time class="comment-card__time">{{ comment.createdAt | date: 'MMM d, y, h:mm a' }}</time>
+    </header>
+
+    <p class="comment-card__text">{{ comment.text }}</p>
+
+    <div class="comment-card__actions">
+      <button
+        type="button"
+        class="comment-card__reply-btn"
+        (click)="toggleReply(comment.id)">
+        {{ replyTo === comment.id ? 'Cancel' : 'Reply' }}
+      </button>
+    </div>
+
+    @if (replyTo === comment.id) {
+      <div class="comment-card__form-wrap">
+        <app-comment-form
+          [parentId]="comment.id"
+          (submitComment)="addReply(comment.id, $event)">
+        </app-comment-form>
+      </div>
+    }
+
+    @if (replies(comment.id).length) {
+      <div class="comment-card__replies">
+        <app-comment-thread
+          [comments]="replies(comment.id)">
+        </app-comment-thread>
+      </div>
+    }
+  </article>
+} @empty {
+  <p class="comment-thread__empty">No comments yet. Be the first to share your thoughts.</p>
+}
