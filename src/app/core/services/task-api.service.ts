@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TaskApiService {
   private http = inject(HttpClient);
-  private apiUrl = 'assets/tasks.json';
+  private apiUrl = '/assets/data/tasks.json';
 
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl);

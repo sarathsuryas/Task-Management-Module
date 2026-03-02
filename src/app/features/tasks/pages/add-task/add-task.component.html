@@ -1,0 +1,82 @@
+<section class="bg-white py-16">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-black">Add Task</h2>
+      <p class="text-gray-600 mt-1">Create a new task and add it to your list.</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-5 border rounded-lg p-6 shadow-sm">
+      <div>
+        <label for="title" class="block text-sm font-medium text-black mb-2">Title</label>
+        <input
+          id="title"
+          type="text"
+          formControlName="title"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+        />
+        @if (form.controls.title.touched && form.controls.title.hasError('required')) {
+          <p class="text-sm text-red-600 mt-1">Title is required.</p>
+        }
+      </div>
+
+     <div>
+  <label class="block text-sm font-medium text-black mb-2">
+    Description
+  </label>
+
+  <quill-editor
+    formControlName="description"
+    [modules]="quillConfig"
+    class="bg-white]">
+  </quill-editor>
+
+  @if (form.controls.description.touched && form.controls.description.hasError('required')) {
+    <p class="text-sm text-red-600 mt-1">Description is required.</p>
+  }
+</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label for="deadline" class="block text-sm font-medium text-black mb-2">Deadline</label>
+          <input
+            id="deadline"
+            type="date"
+            formControlName="deadline"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+          />
+          @if (form.controls.deadline.touched && form.controls.deadline.hasError('required')) {
+            <p class="text-sm text-red-600 mt-1">Deadline is required.</p>
+          }
+        </div>
+
+        <div>
+          <label for="status" class="block text-sm font-medium text-black mb-2">Status</label>
+          <select
+            id="status"
+            formControlName="status"
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+          >
+            @for (status of statuses; track status) {
+              <option [value]="status">{{ status }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-3 pt-2">
+        <button
+          type="button"
+          (click)="cancel()"
+          class="border border-black px-5 py-2 rounded-md hover:bg-gray-100 transition"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="bg-black text-white px-5 py-2 rounded-md hover:opacity-80 transition"
+        >
+          Save Task
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

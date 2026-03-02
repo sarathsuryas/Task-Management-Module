@@ -11,6 +11,10 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('@features/home/home.routes').then((m) => m.HOME_ROUTES),
       },
+      {
+        path: 'tasks',
+        loadChildren: () => import('@features/tasks/tasks.routes').then((m) => m.TASK_LIST_ROUTES),
+      },
     ],
   },
 

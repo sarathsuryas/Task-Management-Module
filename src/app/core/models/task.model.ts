@@ -7,3 +7,6 @@ export interface Task {
   deadline: string;
   status: TaskStatus;
 }
+
+export type CreateTaskPayload = Omit<Task, 'id'>;
+

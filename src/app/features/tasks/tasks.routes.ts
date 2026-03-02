@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { TaskListComponent } from './pages/task-list/task-list.component';
+import { AddTaskComponent } from './pages/add-task/add-task.component';
 import { TaskDetailsComponent } from './pages/task-details/task-details.component';
+import { TaskListComponent } from './pages/task-list/task-list.component';
 
 export const TASK_LIST_ROUTES: Routes = [
   {
@@ -9,7 +10,12 @@ export const TASK_LIST_ROUTES: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'add',
+    component: AddTaskComponent,
+  },
+  {
     path: ':id',
     component: TaskDetailsComponent,
   },
 ];
+

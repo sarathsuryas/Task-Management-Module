@@ -1,1 +1,44 @@
-<p>task-card works!</p>
+<div (click)="goToDetails()" class="border border-gray-200 rounded-lg p-5 bg-white shadow-sm hover:shadow-md transition">
+
+  <!-- Header -->
+  <div class="flex justify-between items-start mb-3">
+    <h3 class="text-xl font-semibold text-black">
+      {{task().title}}
+    </h3>
+
+  <span
+  appStatusColor
+  [status]="task().status"
+  class="text-xs px-3 py-1 border border-black rounded-full"
+>
+  {{ task().status }}
+</span>
+  </div>
+
+  <!-- Description -->
+  <p class="text-gray-600 mb-4"  [innerHTML]="task().description">
+    
+  </p>
+
+  <!-- Deadline -->
+  <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
+    <span>Deadline:</span>
+    <span class="font-medium text-black"> {{ task().deadline | date }}</span>
+  </div>
+
+  <!-- Actions -->
+  <div class="flex justify-end gap-3">
+
+    <button  (click)="onEdit($event)"
+      class="border border-black px-4 py-1 rounded-md hover:bg-gray-100 transition text-sm">
+      Edit
+    </button>
+
+    <button  (click)="onDelete($event)"
+      class="bg-black text-white px-4 py-1 rounded-md hover:opacity-80 transition text-sm">
+      Delete
+    </button>
+
+  </div>
+
+</div>
