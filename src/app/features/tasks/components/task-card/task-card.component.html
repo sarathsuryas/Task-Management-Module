@@ -16,8 +16,9 @@
   </div>
 
   <!-- Description -->
- <p class="text-gray-600 mb-4">
-  {{ task().description | preview:120 }}
+<p
+  class="text-gray-600 mb-4"
+  [innerHTML]="task().description | preview:120">
 </p>
 
   <!-- Deadline -->
