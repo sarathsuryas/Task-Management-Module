@@ -69,13 +69,14 @@ export class TaskStore {
       id,
     };
 
-    this.tasks = [
-      ...this.tasks.slice(0, index),
-      updatedTask,
-      ...this.tasks.slice(index + 1),
-    ];
+    this.tasks = [...this.tasks.slice(0, index), updatedTask, ...this.tasks.slice(index + 1)];
 
     this.hasLoaded = true;
     return updatedTask;
+  }
+  deleteTask(id: number) {
+    runInAction(() => {
+      this.tasks = this.tasks.filter((task) => task.id !== id);
+    });
   }
 }

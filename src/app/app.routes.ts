@@ -15,6 +15,11 @@ export const routes: Routes = [
         path: 'tasks',
         loadChildren: () => import('@features/tasks/tasks.routes').then((m) => m.TASK_LIST_ROUTES),
       },
+      {
+        path: 'calender',
+        loadChildren: () =>
+          import('@features/calender/calender.routes').then((m) => m.CALENDER_ROUTES),
+      },
     ],
   },
 

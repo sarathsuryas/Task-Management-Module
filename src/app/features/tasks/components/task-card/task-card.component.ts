@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from '@core/models/task.model';
+import { TaskStore } from '@core/stores/task.store';
 import { StatusColorDirective } from '@shared/directives/status-color.directive';
 import { PreviewPipe } from '@shared/pipes/preview-pipe';
 
@@ -14,7 +15,7 @@ import { PreviewPipe } from '@shared/pipes/preview-pipe';
 export class TaskCardComponent {
   task = input.required<Task>();
   private router = inject(Router);
-
+  private store = inject(TaskStore);
   goToDetails() {
     this.router.navigate(['/tasks', this.task().id]);
   }
@@ -26,5 +27,10 @@ export class TaskCardComponent {
 
   onDelete(event: MouseEvent) {
     event.stopPropagation();
+    const confirmDelete = confirm('Are you sure you want to delete this task?');
+
+    if (!confirmDelete) return;
+
+    this.store.deleteTask(this.task().id);
   }
 }
