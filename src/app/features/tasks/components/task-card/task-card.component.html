@@ -16,9 +16,9 @@
   </div>
 
   <!-- Description -->
-  <p class="text-gray-600 mb-4"  [innerHTML]="task().description">
-    
-  </p>
+ <p class="text-gray-600 mb-4">
+  {{ task().description | preview:120 }}
+</p>
 
   <!-- Deadline -->
   <div class="flex justify-between items-center text-sm text-gray-500 mb-4">
