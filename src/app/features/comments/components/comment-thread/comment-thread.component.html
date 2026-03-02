@@ -1,38 +1,42 @@
-@for (comment of comments(); track comment.id) {
-  <article class="comment-card">
-    <header class="comment-card__header">
-      <span class="comment-card__author">Contributor</span>
-      <time class="comment-card__time">{{ comment.createdAt | date: 'MMM d, y, h:mm a' }}</time>
-    </header>
+<section class="space-y-4 mt-4">
+  @for (comment of comments(); track comment.id) {
+    <article class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <header class="flex items-center justify-between gap-3">
+        <span class="text-sm font-semibold text-slate-800">Contributor</span>
+        <time class="text-xs text-slate-500">{{ comment.createdAt | date: 'MMM d, y, h:mm a' }}</time>
+      </header>
 
-    <p class="comment-card__text">{{ comment.text }}</p>
+      <p class="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-slate-700">{{ comment.text }}</p>
 
-    <div class="comment-card__actions">
-      <button
-        type="button"
-        class="comment-card__reply-btn"
-        (click)="toggleReply(comment.id)">
-        {{ replyTo === comment.id ? 'Cancel' : 'Reply' }}
-      </button>
-    </div>
-
-    @if (replyTo === comment.id) {
-      <div class="comment-card__form-wrap">
-        <app-comment-form
-          [parentId]="comment.id"
-          (submitComment)="addReply(comment.id, $event)">
-        </app-comment-form>
+      <div class="mt-3 flex items-center">
+        <button
+          type="button"
+          class="inline-flex items-center rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
+          (click)="toggleReply(comment.id)">
+          {{ replyTo === comment.id ? 'Cancel' : 'Reply' }}
+        </button>
       </div>
-    }
 
-    @if (replies(comment.id).length) {
-      <div class="comment-card__replies">
-        <app-comment-thread
-          [comments]="replies(comment.id)">
-        </app-comment-thread>
-      </div>
-    }
-  </article>
-} @empty {
-  <p class="comment-thread__empty">No comments yet. Be the first to share your thoughts.</p>
-}
+      @if (replyTo === comment.id) {
+        <div class="mt-3">
+          <app-comment-form
+            [parentId]="comment.id"
+            (submitComment)="addReply(comment.id, $event)">
+          </app-comment-form>
+        </div>
+      }
+
+      @if (replies(comment.id).length) {
+        <div class="mt-4 border-l-2 border-slate-200 pl-4">
+          <app-comment-thread
+            [comments]="replies(comment.id)">
+          </app-comment-thread>
+        </div>
+      }
+    </article>
+  } @empty {
+    <p class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600">
+      No comments yet. Be the first to share your thoughts.
+    </p>
+  }
+</section>

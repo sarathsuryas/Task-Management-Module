@@ -1,20 +1,22 @@
-<form class="comment-form" (ngSubmit)="submit()">
-  <label class="comment-form__label" [class.comment-form__label--reply]="parentId()">
+<form
+  class="space-y-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+  (ngSubmit)="submit()">
+  <label class="block text-sm font-semibold text-slate-800">
     {{ parentId() ? 'Write a reply' : 'Add a comment' }}
   </label>
 
   <textarea
     name="commentText"
-    class="comment-form__textarea"
+    class="block w-full resize-y rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
     [(ngModel)]="text"
     [placeholder]="parentId() ? 'Share your reply...' : 'Share your thoughts...'"
     rows="4">
-  </textarea>
+  </textarea> 
 
-  <div class="comment-form__actions">
+  <div class="flex justify-end">
     <button
       type="submit"
-      class="comment-form__submit"
+      class="inline-flex items-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
       [disabled]="!text.trim()">
       {{ parentId() ? 'Post reply' : 'Post comment' }}
     </button>

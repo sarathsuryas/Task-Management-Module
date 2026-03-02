@@ -4,10 +4,12 @@ import { Task } from '@core/models/task.model';
 import { CommentStore } from '@core/stores/comment.store';
 import { TaskStore } from '@core/stores/task.store';
 import { TaskBodyComponent } from '@features/tasks/components/task-body/task-body.component';
+import { CommentFormComponent } from '@features/comments/components/comment-form/comment-form.component';
+import { CommentThreadComponent } from '@features/comments/components/comment-thread/comment-thread.component';
 
 @Component({
   selector: 'app-task-details',
-  imports: [TaskBodyComponent],
+  imports: [TaskBodyComponent, CommentFormComponent, CommentThreadComponent],
   templateUrl: './task-details.component.html',
   styleUrl: './task-details.component.css',
 })
